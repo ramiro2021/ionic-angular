@@ -1,3 +1,4 @@
+import { RespuestaTopHeadlines } from './../interfaces/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -10,6 +11,6 @@ export class NoticiasService {
 
 
   getTopHeadlines() {
-    return this.http.get(`http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=ba15a0fb0b9c45c7924249d4cb60acb7`);
+    return this.http.get<RespuestaTopHeadlines>(`http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=ba15a0fb0b9c45c7924249d4cb60acb7`);
   }
 }
