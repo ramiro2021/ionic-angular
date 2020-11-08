@@ -16,6 +16,7 @@
 
   <app-noticias
     *ngIf="dataLocalService.noticias.length > 0"
+    [enFavoritos]="true"
     [noticias]="dataLocalService.noticias"
   ></app-noticias>
 </ion-content>

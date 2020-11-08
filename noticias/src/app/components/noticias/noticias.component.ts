@@ -7,8 +7,10 @@ import { Article } from '../../interfaces/interfaces';
   styleUrls: ['./noticias.component.scss'],
 })
 export class NoticiasComponent implements OnInit {
-  @Input() noticias: Article[] = [];
 
+
+  @Input() noticias: Article[] = [];
+  @Input() enFavoritos = false;
 
   constructor() { }
 
