@@ -1,0 +1,56 @@
+<app-header [title]="nombre || 'input forms'"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Input Normal</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Ingrese su nombre"
+        [(ngModel)]="nombre"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+    <ion-list-header>
+      <ion-label>Formulario Valido: {{formulario.valid}}</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label for="email">Email:</ion-label>
+      <ion-input
+        type="email"
+        name="email"
+        [(ngModel)]="usuario.email"
+        placeholder="ingrese su email"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label for="email">Password</ion-label>
+      <ion-input
+        type="password"
+        name="password"
+        placeholder="ingrese su contraseñá"
+        [(ngModel)]="usuario.password"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-button
+      [disabled]="formulario.invalid"
+      type="submit"
+      expand="block"
+      fill="clear"
+      shape="round"
+    >
+      Click me
+    </ion-button>
+  </form>
+</ion-content>
