@@ -26,12 +26,12 @@ export class Registro {
                 break;
             case 'geo:':
                 this.type = 'geo';
-                this.icon = 'pin';
+                this.icon = 'location';
                 break;
 
             default:
                 this.type = 'No reconocido';
-                this.icon = 'create';
+                this.icon = 'checkmark';
                 break;
         }
     }

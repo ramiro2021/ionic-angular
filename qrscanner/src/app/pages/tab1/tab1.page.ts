@@ -18,7 +18,7 @@ export class Tab1Page {
 
 
   ionViewDidEnter() {
-    this.scan();
+    // this.scan();
   }
 
   scan() {
@@ -26,11 +26,14 @@ export class Tab1Page {
 
       if (!barcodeData.cancelled) {
         this.dataLocal.guardarRegistro(barcodeData.format, barcodeData.text);
+        console.log('entro');
       }
 
     }).catch(err => {
       console.log('Error', err);
-      this.dataLocal.guardarRegistro('QRCode', 'https://www.youtube.com/');
+      // this.dataLocal.guardarRegistro('QRCode', 'https://www.youtube.com/');
+      // this.dataLocal.guardarRegistro('QRCode', 'geo:40.73151796986687,-74.06087294062502');
+
     });
 
   }
