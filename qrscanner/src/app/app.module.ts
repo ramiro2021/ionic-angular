@@ -17,6 +17,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import { File } from '@ionic-native/file/ngx';
 
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -27,7 +29,8 @@ import { File } from '@ionic-native/file/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
     InAppBrowser,
-    File
+    File,
+    EmailComposer
   ],
   bootstrap: [AppComponent]
 })

@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { File } from '@ionic-native/file/ngx';
-
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class DataLocalService {
     private storage: Storage,
     private navCtrl: NavController,
     private iab: InAppBrowser,
-    private file: File) {
+    private file: File,
+    private emailComposer: EmailComposer) {
     this.cargarStorage();
   }
 
@@ -90,7 +91,7 @@ export class DataLocalService {
         return this.escribirEnArchivo(text);
       })
       .catch(err => {
-        console.log(err);
+        console.log('creando archivo');
         return this.file.createFile(this.file.dataDirectory, 'registros.csv', false)
           .then(create => this.escribirEnArchivo(text))
           .catch(err2 => console.log('no se pudo crear archivo : ', err2));
@@ -98,6 +99,29 @@ export class DataLocalService {
   }
 
   async escribirEnArchivo(text: string) {
+    console.log('escribiendo archivo');
     await this.file.writeExistingFile(this.file.dataDirectory, 'registros.csv', text);
+    console.log('ARCHIVO CREADO');
+    console.log(`${this.file.dataDirectory}registros.csv`);
+    const archivo = `${this.file.dataDirectory}registros.csv`;
+
+    const email = {
+      to: 'ramiroamurua@gmail.com',
+      cc: null,
+      bcc: null,
+      attachments: [
+        archivo
+      ],
+      subject: 'Backup de Scans',
+      body: 'Este es su backup de los scans realizados :) - <strong>QRScanner</strong>',
+      isHtml: true
+    };
+    console.log('enviando email...');
+    this.emailComposer.open(email);
+
+
+    // Send a text message using default options
+    console.log('enviando...');
+    await this.emailComposer.open(email);
   }
 }
