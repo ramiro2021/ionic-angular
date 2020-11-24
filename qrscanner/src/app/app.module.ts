@@ -15,6 +15,8 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
+import { File } from '@ionic-native/file/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,7 +26,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
-    InAppBrowser
+    InAppBrowser,
+    File
   ],
   bootstrap: [AppComponent]
 })
